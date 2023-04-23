@@ -38,6 +38,36 @@ const Navbar = () => {
     }
   };
 
+  const openNotification = () => {
+    if (!notification) {
+      setNotification(true);
+      setDiscover(false);
+      setHelp(false);
+      setProfile(false);
+    } else {
+      setNotification(false);
+    }
+  };
+
+  const openProfile = () => {
+    if (!profile) {
+      setProfile(true);
+      setNotification(false);
+      setDiscover(false);
+      setHelp(false);
+    } else {
+      setProfile(false);
+    }
+  };
+
+  const openSideBar = () => {
+    if (!openSideMenu) {
+      setOpenSideMenu(true);
+    } else {
+      setOpenSideMenu(false);
+    }
+  };
+
   return (
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
@@ -60,13 +90,67 @@ const Navbar = () => {
 
         <div className={Style.navbar_container_right}>
           <div className={Style.navbar_container_right_discover}>
-            <p onClick={(e) => {}}>Discover</p>
-            <div className={Style.navbar_container_right_discover_box}>
-              <Discover />
-            </div>
+            <p
+              onClick={(e) => {
+                openMenu(e);
+              }}
+            >
+              Discover
+            </p>
+            {discover && (
+              <div className={Style.navbar_container_right_discover_box}>
+                <Discover />
+              </div>
+            )}
+          </div>
+
+          <div className={Style.navbar_container_right_help}>
+            <p onClick={(e) => openMenu(e)}>Help Center</p>
+            {help && (
+              <div className={Style.navbar_container_right_help_box}></div>
+            )}
           </div>
         </div>
+
+        <div className={Style.navbar_container_right_notify}>
+          <MdNotifications
+            className={Style.notify}
+            onClick={(e) => openNotification}
+          />
+          {notification && <Notification />}
+        </div>
+
+        <div className={Style.navbar_container_right_button}>
+          <Button btnText="Create" />
+        </div>
+
+        <div className={Style.navbar_container_right_profile_box}>
+          <div className={Style.navbar_container_right_profile}>
+            <Image
+              src={Images.user1}
+              alt="Profile"
+              width={40}
+              height={40}
+              onClick={() => openProfile()}
+              className={Style.navbar_container_right_profile}
+            />
+            {profile && <Profile />}
+          </div>
+        </div>
+
+        <div className={Style.navbar_container_right_menuBtn}>
+          <CgMenuRight
+            className={Style.menuIcon}
+            onClick={() => openSideBar()}
+          />
+        </div>
       </div>
+
+      {openSideMenu && (
+        <div className={Style.SideBar}>
+          <SideBar setOpenSideMenu={setOpenSideMenu} />
+        </div>
+      )}
     </div>
   );
 };
