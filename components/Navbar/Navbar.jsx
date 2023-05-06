@@ -107,7 +107,9 @@ const Navbar = () => {
           <div className={Style.navbar_container_right_help}>
             <p onClick={(e) => openMenu(e)}>Help Center</p>
             {help && (
-              <div className={Style.navbar_container_right_help_box}></div>
+              <div className={Style.navbar_container_right_help_box}>
+                <HelpCenter />
+              </div>
             )}
           </div>
         </div>
@@ -115,7 +117,7 @@ const Navbar = () => {
         <div className={Style.navbar_container_right_notify}>
           <MdNotifications
             className={Style.notify}
-            onClick={(e) => openNotification}
+            onClick={(e) => openNotification()}
           />
           {notification && <Notification />}
         </div>
