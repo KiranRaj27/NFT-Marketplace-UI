@@ -14,7 +14,7 @@ import {
 
 import Style from "./SideBar.module.css";
 import images from "../../../img";
-import Button from "../../Button/Button";
+import { Button } from "../../componentsindex";
 
 const SideBar = ({ setOpenSideMenu }) => {
   const [openDiscover, setOpenDiscover] = useState(false);

@@ -1,11 +1,11 @@
 import "@/styles/globals.css";
 
-import { Navbar } from "../../components/componentindex";
+import { NavBar } from "../../components/componentsindex";
 
 const App = ({ Component, pageProps }) => {
   return (
     <div>
-      <Navbar />
+      <NavBar />
       <Component {...pageProps} />
     </div>
   );
