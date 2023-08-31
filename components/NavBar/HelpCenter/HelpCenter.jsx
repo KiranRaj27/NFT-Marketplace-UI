@@ -18,8 +18,8 @@ const HelpCenter = () => {
       link: "sign-up",
     },
     {
-      name: "Sign Ip",
-      link: "sign-ip",
+      name: "Sign In",
+      link: "sign-in",
     },
     {
       name: "Subscription",
